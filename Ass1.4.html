@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+    <style>
+        #container{
+            width:100%;
+            height: 40px;
+            background-color: blanchedalmond;
+            justify-items: auto;
+            display: flex;
+            margin: 100px;
+            padding-right: 300px;
+            gap: 300px;;
+        }
+        #btn1{
+            width:700px;
+            font-weight: bold;
+            text-align:left;
+            color:black;
+            font-size: larger;
+            border-radius: 10px;
+        }
+        #btn2{
+            width:400px;
+            text-align:left;
+            background-color: blue;
+            color: black;
+            text-align: center;
+            font-weight: bold;
+            font-size: larger;
+            border-radius: 18px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Your JSX code here
+
+      const rootElement = document.getElementById("root")
+
+      const App = () => {
+        return (
+            <div style={{width:"100%", backgroundColor:"aqua",textAlign: "center",}}>
+            <img src="data:image/jpeg;base64,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" />
+            <h1>SUBSCRIBE</h1>
+            <h2>Subscribe to our newslatter & stay up to date!</h2>
+           <div id="container">
+            <button id="btn1">john@doe.net</button>
+            <button id="btn2">Subscribe</button>
+            </div>
+        </div>
+        )
+      }
+      const reactRoot = ReactDOM.createRoot(rootElement)
+      reactRoot.render(<App/>)
+    </script>
+  </body>
+</html>
