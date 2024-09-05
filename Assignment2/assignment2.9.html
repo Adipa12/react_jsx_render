@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components in React</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Write your code here
+    const rootElement = document.getElementById("root");
+
+    const styles = {
+        container: {
+            fontFamily: "Arial, sans-serif",
+            padding: "20px",
+            maxWidth: "600px",
+            margin: "0 auto",
+            textAlign: "center",
+        },
+        stepNumber: {
+            fontSize: "24px",
+            fontWeight: "bold",
+            backgroundColor: "#f0f0f0",
+            borderRadius: "50%",
+            width: "50px",
+            height: "50px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "0 auto",
+            marginBottom: "10px"
+        },
+        title: {
+            fontSize: "20px",
+            margin: "10px 0"
+        },
+        description: {
+            fontSize: "16px",
+            color: "#666"
+        },
+        highlight: {
+            color: "#007BFF"
+        },
+        stepsContainer: {
+            marginTop: "20px"
+        }
+    };
+
+    const StepCard = ({ stepNumber, title, description }) => {
+        return (
+            <div style={styles.container}>
+                <div style={styles.stepNumber}>
+                    {stepNumber}
+                </div>
+                <h3 style={styles.title}>{title}</h3>
+                <p style={styles.description}>{description}</p>
+            </div>
+        );
+    };
+
+    function App() {
+        const steps = [
+            {
+                stepNumber: '01',
+                title: 'Find your template',
+                description: 'Every template is embedded within an iframe, so you can easily check what they look like and test the responsive behavior.'
+            },
+            {
+                stepNumber: '02',
+                title: 'Copy the code',
+                description: 'Click the code tab to see the actual source code of the template. Copy and paste it into your project and adjust it to your needs.'
+            },
+            {
+                stepNumber: '03',
+                title: 'Enjoy your free time',
+                description: 'You\'ve just saved yourself a bunch of time not building the same stuff over and over again. Enjoy your free time, and build business features.'
+            }
+        ];
+
+        return (
+            <div style={styles.container}>
+                <h2>Getting started in <span style={styles.highlight}>3 easy steps</span></h2>
+                <div style={styles.stepsContainer}>
+                    {steps.map((step, index) => (
+                        <StepCard
+                            key={index}
+                            stepNumber={step.stepNumber}
+                            title={step.title}
+                            description={step.description}
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    ReactDOM.createRoot(rootElement).render(<App />);
+  </script>
+</body>
+</html>
